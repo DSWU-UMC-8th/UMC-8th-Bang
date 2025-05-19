@@ -26,6 +26,9 @@ public class MemberMission extends BaseEntity {
     @JoinColumn(name = "mission_id", nullable = false)
     private Mission mission;
 
+    @Column(nullable = false)
+    private String commitment;
+
     @Enumerated(EnumType.STRING)
     private MissionStatus status;
 }
