@@ -1,11 +1,16 @@
 package com.umc.study.domain.mapping;
 
+import com.umc.study.domain.FoodCategory;
+import com.umc.study.domain.Member;
 import com.umc.study.domain.common.BaseEntity;
 import jakarta.persistence.*;
-import com.umc.study.domain.Member;
-import com.umc.study.domain.FoodCategory;
+import lombok.*;
 
 @Entity
+@Getter
+@Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class MemberPrefer extends BaseEntity {
 
     @Id
@@ -21,5 +26,14 @@ public class MemberPrefer extends BaseEntity {
     @JoinColumn(name = "category_id")
     private FoodCategory foodCategory; // 클래스명 실수
 
+    public void setMember(Member member){
+        if(this.member != null)
+            member.getMemberPreferList().remove(this);
+        this.member = member;
+        member.getMemberPreferList().add(this);
+    }
 
+    public void setFoodCategory(FoodCategory foodCategory){
+        this.foodCategory = foodCategory;
+    }
 }
