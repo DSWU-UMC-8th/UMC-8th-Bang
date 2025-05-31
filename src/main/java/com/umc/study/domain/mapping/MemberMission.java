@@ -6,7 +6,7 @@ import com.umc.study.domain.common.BaseEntity;
 import com.umc.study.domain.enums.MissionStatus;
 import jakarta.persistence.*;
 import lombok.*;
-
+// entity
 @Entity
 @Getter
 @Builder
